@@ -23,60 +23,60 @@ type Calendar struct {
 
 // Event represents a VEVENT component.
 type Event struct {
-	UID             string
-	Summary         string
-	Description     string
-	Location        string
-	URL             string
-	Status          string // TENTATIVE, CONFIRMED, CANCELLED
-	Transp          string // OPAQUE, TRANSPARENT
-	Organizer       *Attendee
-	Attendees       []*Attendee
-	StartTime       *time.Time
-	EndTime         *time.Time
-	Due             *time.Time
-	Duration        string
-	Created         *time.Time
-	LastModified    *time.Time
-	Sequence        int
-	RecurrenceRule  string
-	ExDate          []time.Time
-	RDate           []time.Time
-	Alarms          []*Alarm
-	Categories      []string
-	Attachments     []Attachment
-	Properties      []Property
+	UID            string
+	Summary        string
+	Description    string
+	Location       string
+	URL            string
+	Status         string // TENTATIVE, CONFIRMED, CANCELLED
+	Transp         string // OPAQUE, TRANSPARENT
+	Organizer      *Attendee
+	Attendees      []*Attendee
+	StartTime      *time.Time
+	EndTime        *time.Time
+	Due            *time.Time
+	Duration       string
+	Created        *time.Time
+	LastModified   *time.Time
+	Sequence       int
+	RecurrenceRule string
+	ExDate         []time.Time
+	RDate          []time.Time
+	Alarms         []*Alarm
+	Categories     []string
+	Attachments    []Attachment
+	Properties     []Property
 }
 
 // Todo represents a VTODO component.
 type Todo struct {
-	UID            string
-	Summary        string
-	Description    string
-	Status         string // NEEDS-ACTION, COMPLETED, IN-PROCESS, CANCELLED
-	Priority       int
-	StartTime      *time.Time
-	Due            *time.Time
-	Duration       string
-	Completed      *time.Time
+	UID             string
+	Summary         string
+	Description     string
+	Status          string // NEEDS-ACTION, COMPLETED, IN-PROCESS, CANCELLED
+	Priority        int
+	StartTime       *time.Time
+	Due             *time.Time
+	Duration        string
+	Completed       *time.Time
 	PercentComplete int
-	Created        *time.Time
-	LastModified   *time.Time
-	RecurrenceRule string
-	Alarms         []*Alarm
-	Properties     []Property
+	Created         *time.Time
+	LastModified    *time.Time
+	RecurrenceRule  string
+	Alarms          []*Alarm
+	Properties      []Property
 }
 
 // Journal represents a VJOURNAL component.
 type Journal struct {
-	UID           string
-	Summary       string
-	Description   string
-	Status        string
-	StartTime     *time.Time
-	Created       *time.Time
-	LastModified  *time.Time
-	Properties    []Property
+	UID          string
+	Summary      string
+	Description  string
+	Status       string
+	StartTime    *time.Time
+	Created      *time.Time
+	LastModified *time.Time
+	Properties   []Property
 }
 
 // FreeBusy represents a VFREEBUSY component.
@@ -98,21 +98,21 @@ type FreeBusyInterval struct {
 
 // TimeZone represents a VTIMEZONE component.
 type TimeZone struct {
-	ID        string
-	StartDate *time.Time
-	Standard  *TimeZoneObservance
-	Daylight  *TimeZoneObservance
+	ID         string
+	StartDate  *time.Time
+	Standard   *TimeZoneObservance
+	Daylight   *TimeZoneObservance
 	Properties []Property
 }
 
 // TimeZoneObservance represents STANDARD or DAYLIGHT sub-component.
 type TimeZoneObservance struct {
-	OffsetFrom   string
-	OffsetTo     string
-	StartTime    *time.Time
+	OffsetFrom     string
+	OffsetTo       string
+	StartTime      *time.Time
 	RecurrenceRule string
-	Abbreviation string
-	Properties   []Property
+	Abbreviation   string
+	Properties     []Property
 }
 
 // Alarm represents a VALARM sub-component.
@@ -142,9 +142,9 @@ type Attendee struct {
 
 // Attachment represents an ATTACH property.
 type Attachment struct {
-	URI     string
-	Binary  string
-	Format  string
+	URI        string
+	Binary     string
+	Format     string
 	Properties []Property
 }
 
@@ -158,11 +158,11 @@ type Property struct {
 // Parse parses an iCalendar string into a Calendar object.
 func Parse(input string) (*Calendar, error) {
 	c := &Calendar{
-		Events:    make([]*Event, 0),
-		Todos:     make([]*Todo, 0),
-		Journals:  make([]*Journal, 0),
-		FreeBusy:  make([]*FreeBusy, 0),
-		TimeZones: make([]*TimeZone, 0),
+		Events:     make([]*Event, 0),
+		Todos:      make([]*Todo, 0),
+		Journals:   make([]*Journal, 0),
+		FreeBusy:   make([]*FreeBusy, 0),
+		TimeZones:  make([]*TimeZone, 0),
 		Properties: make([]Property, 0),
 	}
 

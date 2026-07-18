@@ -28,17 +28,17 @@ type EventJSON struct {
 
 // ContactJSON is the JSON representation of a contact.
 type ContactJSON struct {
-	FullName     string            `json:"full_name"`
-	FirstName    string            `json:"first_name,omitempty"`
-	LastName     string            `json:"last_name,omitempty"`
-	Organization string            `json:"organization,omitempty"`
-	Title        string            `json:"title,omitempty"`
-	Emails       []ContactEmail    `json:"emails,omitempty"`
-	Phones       []ContactPhone    `json:"phones,omitempty"`
-	Addresses    []ContactAddress  `json:"addresses,omitempty"`
-	Notes        string            `json:"notes,omitempty"`
-	Categories   []string          `json:"categories,omitempty"`
-	Birthday     string            `json:"birthday,omitempty"`
+	FullName     string           `json:"full_name"`
+	FirstName    string           `json:"first_name,omitempty"`
+	LastName     string           `json:"last_name,omitempty"`
+	Organization string           `json:"organization,omitempty"`
+	Title        string           `json:"title,omitempty"`
+	Emails       []ContactEmail   `json:"emails,omitempty"`
+	Phones       []ContactPhone   `json:"phones,omitempty"`
+	Addresses    []ContactAddress `json:"addresses,omitempty"`
+	Notes        string           `json:"notes,omitempty"`
+	Categories   []string         `json:"categories,omitempty"`
+	Birthday     string           `json:"birthday,omitempty"`
 }
 
 // ContactEmail represents an email in JSON.

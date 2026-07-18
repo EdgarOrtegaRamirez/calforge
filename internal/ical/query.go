@@ -153,10 +153,10 @@ func (c *Calendar) GetUpcomingEvents(days int) []*Event {
 // Stats returns calendar statistics.
 func (c *Calendar) Stats() CalendarStats {
 	stats := CalendarStats{
-		TotalEvents:   len(c.Events),
-		TotalTodos:    len(c.Todos),
-		TotalJournals: len(c.Journals),
-		TotalFreeBusy: len(c.FreeBusy),
+		TotalEvents:    len(c.Events),
+		TotalTodos:     len(c.Todos),
+		TotalJournals:  len(c.Journals),
+		TotalFreeBusy:  len(c.FreeBusy),
 		TotalTimeZones: len(c.TimeZones),
 	}
 
@@ -191,16 +191,16 @@ func (c *Calendar) Stats() CalendarStats {
 
 // CalendarStats holds calendar statistics.
 type CalendarStats struct {
-	TotalEvents    int
-	TotalTodos     int
-	TotalJournals  int
-	TotalFreeBusy  int
-	TotalTimeZones int
+	TotalEvents     int
+	TotalTodos      int
+	TotalJournals   int
+	TotalFreeBusy   int
+	TotalTimeZones  int
 	UniqueAttendees int
-	EarliestEvent  time.Time
-	LatestEvent    time.Time
-	StatusCounts   map[string]int
-	CategoryCounts map[string]int
+	EarliestEvent   time.Time
+	LatestEvent     time.Time
+	StatusCounts    map[string]int
+	CategoryCounts  map[string]int
 }
 
 // StatsText returns a human-readable stats string.

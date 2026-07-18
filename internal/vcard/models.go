@@ -8,33 +8,33 @@ import (
 
 // Contact represents a vCard contact.
 type Contact struct {
-	Version       string
-	FirstName     string
-	LastName      string
-	MiddleName    string
-	Prefix        string
-	Suffix        string
-	FullName      string
-	Nickname      []string
-	Birthday      string
-	Anniversary   string
-	Gender        string
-	Organization  string
-	Department    string
-	Title         string
-	Role          string
-	Emails        []Email
-	Phones        []Phone
-	Addresses     []Address
-	URLs          []string
-	Photos        []Photo
-	Notes         string
-	Categories    []string
-	TimeZone      string
-	Geo           *Geo
-	IMs           []IM
-	Relations     []Relation
-	Properties    []Property
+	Version      string
+	FirstName    string
+	LastName     string
+	MiddleName   string
+	Prefix       string
+	Suffix       string
+	FullName     string
+	Nickname     []string
+	Birthday     string
+	Anniversary  string
+	Gender       string
+	Organization string
+	Department   string
+	Title        string
+	Role         string
+	Emails       []Email
+	Phones       []Phone
+	Addresses    []Address
+	URLs         []string
+	Photos       []Photo
+	Notes        string
+	Categories   []string
+	TimeZone     string
+	Geo          *Geo
+	IMs          []IM
+	Relations    []Relation
+	Properties   []Property
 }
 
 // Email represents a vCard email address.
@@ -124,9 +124,9 @@ func Parse(input string) ([]*Contact, error) {
 
 		if strings.ToUpper(line) == "BEGIN:VCARD" {
 			current = &Contact{
-				Emails:   make([]Email, 0),
-				Phones:   make([]Phone, 0),
-				Addresses: make([]Address, 0),
+				Emails:     make([]Email, 0),
+				Phones:     make([]Phone, 0),
+				Addresses:  make([]Address, 0),
 				Properties: make([]Property, 0),
 			}
 			continue
@@ -155,9 +155,9 @@ func Parse(input string) ([]*Contact, error) {
 
 // parsedProp represents a parsed vCard property.
 type parsedProp struct {
-	name       string
-	params     map[string][]string
-	value      string
+	name   string
+	params map[string][]string
+	value  string
 }
 
 // parseProperty parses a single vCard property line.
