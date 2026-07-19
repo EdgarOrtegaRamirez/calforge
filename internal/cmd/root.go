@@ -473,28 +473,44 @@ func cmdConvert(args []string) error {
 
 	switch fromFormat {
 	case "ics", "ical":
-		cal, err := ical.Parse(data)
-		if err != nil {
-			return err
+		cal, errInner := ical.Parse(data)
+		if errInner != nil {
+			return errInner
 		}
 		switch toFormat {
 		case "json":
+			var err error
 			output, err = convert.EventsToJSON(cal)
+			if err != nil {
+				return err
+			}
 		case "csv":
+			var err error
 			output, err = convert.EventsToCSV(cal)
+			if err != nil {
+				return err
+			}
 		default:
 			return fmt.Errorf("unsupported output format: %s", toFormat)
 		}
 	case "vcf", "vcard":
-		contacts, err := vcard.Parse(data)
-		if err != nil {
-			return err
+		contacts, errInner := vcard.Parse(data)
+		if errInner != nil {
+			return errInner
 		}
 		switch toFormat {
 		case "json":
+			var err error
 			output, err = convert.ContactsToJSON(contacts)
+			if err != nil {
+				return err
+			}
 		case "csv":
+			var err error
 			output, err = convert.ContactsToCSV(contacts)
+			if err != nil {
+				return err
+			}
 		default:
 			return fmt.Errorf("unsupported output format: %s", toFormat)
 		}

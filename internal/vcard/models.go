@@ -280,8 +280,14 @@ func applyProperty(c *Contact, p parsedProp) {
 		parts := strings.Split(p.value, ";")
 		if len(parts) >= 2 {
 			geo := &Geo{}
-			fmt.Sscanf(parts[0], "%f", &geo.Latitude)
-			fmt.Sscanf(parts[1], "%f", &geo.Longitude)
+			n, err := fmt.Sscanf(parts[0], "%f", &geo.Latitude)
+			if err != nil || n == 0 {
+				geo.Latitude = 0
+			}
+			n, err = fmt.Sscanf(parts[1], "%f", &geo.Longitude)
+			if err != nil || n == 0 {
+				geo.Longitude = 0
+			}
 			c.Geo = geo
 		}
 	case "IMPP":

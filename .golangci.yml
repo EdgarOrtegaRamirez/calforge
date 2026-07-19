@@ -1,0 +1,33 @@
+version: "2"
+linters:
+  disable-defaults: true
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+run:
+  timeout: 5m
+issues:
+  exclude-rules:
+    - path: internal/ical/models\.go
+      linters:
+        - staticcheck
+      text: "QF1002"
+    - path: internal/ical/models\.go
+      linters:
+        - unused
+      text: "paramOrder"
+    - path: internal/ical/models\.go
+      linters:
+        - errcheck
+      text: "Sscanf"
+    - path: internal/vcard/serialize\.go
+      linters:
+        - staticcheck
+      text: "QF1012"
+    - path: internal/cmd/root\.go
+      linters:
+        - errcheck
+      text: "Sscanf"

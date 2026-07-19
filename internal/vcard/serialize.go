@@ -13,16 +13,16 @@ func (c *Contact) Serialize() string {
 
 	// Full name
 	if c.FullName != "" {
-		b.WriteString(fmt.Sprintf("FN:%s\r\n", c.FullName))
+		fmt.Fprintf(&b, "FN:%s\r\n", c.FullName)
 	}
 
 	// Structured name
-	b.WriteString(fmt.Sprintf("N:%s;%s;%s;%s;%s\r\n",
-		c.LastName, c.FirstName, c.MiddleName, c.Prefix, c.Suffix))
+	fmt.Fprintf(&b, "N:%s;%s;%s;%s;%s\r\n",
+		c.LastName, c.FirstName, c.MiddleName, c.Prefix, c.Suffix)
 
 	// Nickname
 	if len(c.Nickname) > 0 {
-		b.WriteString(fmt.Sprintf("NICKNAME:%s\r\n", strings.Join(c.Nickname, ",")))
+		fmt.Fprintf(&b, "NICKNAME:%s\r\n", strings.Join(c.Nickname, ","))
 	}
 
 	// Birthday

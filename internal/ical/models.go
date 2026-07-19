@@ -501,7 +501,10 @@ func applyEventProperty(e *Event, p Property) {
 	case "LAST-MODIFIED":
 		e.LastModified = parseTime(p.Value)
 	case "SEQUENCE":
-		fmt.Sscanf(p.Value, "%d", &e.Sequence)
+		n, _ := fmt.Sscanf(p.Value, "%d", &e.Sequence)
+		if n == 0 {
+			e.Sequence = 0
+		}
 	case "RRULE":
 		e.RecurrenceRule = p.Value
 	case "CATEGORIES":
@@ -537,7 +540,10 @@ func applyTodoProperty(t *Todo, p Property) {
 	case "STATUS":
 		t.Status = p.Value
 	case "PRIORITY":
-		fmt.Sscanf(p.Value, "%d", &t.Priority)
+		n, _ := fmt.Sscanf(p.Value, "%d", &t.Priority)
+		if n == 0 {
+			t.Priority = 0
+		}
 	case "DTSTART":
 		t.StartTime = parseTime(p.Value)
 	case "DUE":
@@ -547,7 +553,10 @@ func applyTodoProperty(t *Todo, p Property) {
 	case "COMPLETED":
 		t.Completed = parseTime(p.Value)
 	case "PERCENT-COMPLETE":
-		fmt.Sscanf(p.Value, "%d", &t.PercentComplete)
+		n, _ := fmt.Sscanf(p.Value, "%d", &t.PercentComplete)
+		if n == 0 {
+			t.PercentComplete = 0
+		}
 	case "CREATED":
 		t.Created = parseTime(p.Value)
 	case "LAST-MODIFIED":
@@ -651,7 +660,10 @@ func applyAlarmProperty(a *Alarm, p Property) {
 	case "DESCRIPTION":
 		a.Description = p.Value
 	case "REPEAT":
-		fmt.Sscanf(p.Value, "%d", &a.Repeat)
+		n, _ := fmt.Sscanf(p.Value, "%d", &a.Repeat)
+		if n == 0 {
+			a.Repeat = 0
+		}
 	case "DURATION":
 		a.Duration = p.Value
 	case "ATTACH":

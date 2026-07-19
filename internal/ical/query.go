@@ -208,9 +208,9 @@ func (s CalendarStats) StatsText() string {
 	var b strings.Builder
 	b.WriteString("Calendar Statistics\n")
 	b.WriteString("==================\n")
-	b.WriteString(fmt.Sprintf("Events:        %d\n", s.TotalEvents))
-	b.WriteString(fmt.Sprintf("Todos:         %d\n", s.TotalTodos))
-	b.WriteString(fmt.Sprintf("Journals:      %d\n", s.TotalJournals))
+	fmt.Fprintf(&b, "Events:        %d\n", s.TotalEvents)
+	fmt.Fprintf(&b, "Todos:         %d\n", s.TotalTodos)
+	fmt.Fprintf(&b, "Journals:      %d\n", s.TotalJournals)
 	b.WriteString(fmt.Sprintf("Free/Busy:     %d\n", s.TotalFreeBusy))
 	b.WriteString(fmt.Sprintf("Time Zones:    %d\n", s.TotalTimeZones))
 	b.WriteString(fmt.Sprintf("Attendees:     %d\n", s.UniqueAttendees))
